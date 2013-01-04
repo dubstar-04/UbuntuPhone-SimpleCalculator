@@ -16,7 +16,7 @@ function action (buttonText){
         pointPressed = true
     }
 
-    if (buttonText == "+" && operation == "" || buttonText == "-" && operation == ""){
+    if (operation == "" && (buttonText == "+" || buttonText == "-" || buttonText == "x" || buttonText == "/")){
 
         currentValue = display.text
         operation = buttonText
@@ -36,10 +36,22 @@ function action (buttonText){
         currentValue = (parseFloat(currentValue) - parseFloat(currDisplay)).toString()
         display.text = currentValue
         operation = ""
+    }
+    if(buttonText == "=" && operation == "/"){
+
+        var currDisplay = display.text
+        currentValue = (parseFloat(currentValue) / parseFloat(currDisplay)).toString()
+        display.text = currentValue
+        operation = ""
+    }
+    if(buttonText == "=" && operation == "x"){
+
+        var currDisplay = display.text
+        currentValue = (parseFloat(currentValue) * parseFloat(currDisplay)).toString()
+        display.text = currentValue
+        operation = ""
 
     }
-
-
 }
 
 function clear(){
